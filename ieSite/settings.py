@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'bootcamp.questions',
     'bootcamp.search',
     'django.contrib.flatpages' ,
+    'guardian',
     'SIG',
 )
 
@@ -123,3 +124,10 @@ FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0644
 
 SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+ANONYMOUS_USER_ID = -1
