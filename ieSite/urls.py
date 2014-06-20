@@ -4,10 +4,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'ieSite.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', 'ieSite.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^bootcamp/', include('bootcamp.urls')),
+)
+
+# static page placeholders can be created and added uner flatpages
+urlpatterns += patterns('',
+    (r'^pages/', include('django.contrib.flatpages.urls')),
 )

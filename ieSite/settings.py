@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -49,6 +50,7 @@ INSTALLED_APPS = (
     'bootcamp.feeds',
     'bootcamp.questions',
     'bootcamp.search',
+    'django.contrib.flatpages' ,
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,6 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'ieSite.urls'
@@ -117,3 +120,5 @@ LOGIN_REDIRECT_URL = '/bootcamp/feeds/'
 
 FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0644
+
+SITE_ID = 1
