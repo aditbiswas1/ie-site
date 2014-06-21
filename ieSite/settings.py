@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'bootcamp.search',
     'django.contrib.flatpages' ,
     'guardian',
+    'tinymce',
     'SIG',
 )
 
@@ -123,6 +124,7 @@ LOGIN_REDIRECT_URL = '/bootcamp/feeds/'
 FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0644
 
+#Settings for guardian.
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
@@ -131,3 +133,5 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ANONYMOUS_USER_ID = -1
+#To prevent python manage.py test from failing due to faked migrations.
+SOUTH_TESTS_MIGRATE = False

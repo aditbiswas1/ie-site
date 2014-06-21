@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^bootcamp/', include('bootcamp.urls')),
     url(r'^sig/', include('SIG.urls')),
+    url(r'^tinymce/', include('tinymce.urls')),
 )
 
 # static page placeholders can be created and added uner flatpages

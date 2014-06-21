@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from guardian.shortcuts import assign_perm, remove_perm
 from django.db.models.signals import m2m_changed
-
+from tinymce import models as tinymce_models
 # Create your models here.
 class SIGroup(models.Model):
     """Stores entries for a single SIG."""
@@ -60,7 +60,7 @@ class Article(models.Model):
     """Stores details of articles"""
     author = models.ForeignKey(ClubMember,related_name="articleAuthor")
     title = models.CharField(max_length = 255)
-    text = models.TextField()
+    text = tinymce_models.HTMLField()
     published = models.BooleanField(default=False,editable=False)
     dateTimePublished = models.DateTimeField(auto_now_add=True)
 
