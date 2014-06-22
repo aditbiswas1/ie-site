@@ -135,3 +135,14 @@ AUTHENTICATION_BACKENDS = (
 ANONYMOUS_USER_ID = -1
 #To prevent python manage.py test from failing due to faked migrations.
 SOUTH_TESTS_MIGRATE = False
+
+#TinyMCE configuration.
+
+TINYMCE_DEFAULT_CONFIG = {
+            'plugins': "table,spellchecker,paste,searchreplace",
+            'theme': "advanced",
+            'cleanup_on_startup': True,
+            'custom_undo_redo_levels': 10,
+        }
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True
