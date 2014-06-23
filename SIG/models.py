@@ -4,6 +4,7 @@ from django.utils import timezone
 from guardian.shortcuts import assign_perm, remove_perm
 from django.db.models.signals import m2m_changed
 from tinymce import models as tinymce_models
+
 # Create your models here.
 class SIGroup(models.Model):
     """Stores entries for a single SIG."""
@@ -61,8 +62,10 @@ class Article(models.Model):
     author = models.ForeignKey(ClubMember,related_name="articleAuthor")
     title = models.CharField(max_length = 255)
     text = tinymce_models.HTMLField()
+    sig = models.ForeignKey(SIGroup,related_name="articleSIG")
     published = models.BooleanField(default=False,editable=False)
     dateTimePublished = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField()
 
     def __unicode__(self):
         return self.title
@@ -78,6 +81,7 @@ class Project(models.Model):
     sig = models.ForeignKey(SIGroup,related_name="projectSIG")
     projectHead = models.ForeignKey(ClubMember,related_name="projectHead")
     members = models.ManyToManyField(ClubMember,related_name="members")
+    slug = models.SlugField()
 
     def __unicode__(self):
         return self.name

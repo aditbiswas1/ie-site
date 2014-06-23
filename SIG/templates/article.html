@@ -1,0 +1,28 @@
+{% extends 'ieSite/base.html' %}
+
+{% block title %}
+{{article.title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="vert">
+  <div class="container">
+    <h1>{{ article.title }}</h1>
+    <br>
+    <h5> By - {{ article.author.name }} </h5>
+  </div>
+</div>
+
+<div id="sec1" class="blurb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        {{ article.text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
