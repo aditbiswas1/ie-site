@@ -11,7 +11,10 @@ def sig_view(request, slug):
     except SIGroup.DoesNotExist:
 	    raise Http404
 
-    return render(request, 'group.html', { 'sig' : sig})
+    return render(request, 'group.html', { 'sig' : sig,
+                                           'projects': sig.projectSIG.all(),
+                                           'articles': sig.articleSIG.all(),
+                                         })
 
 def project_view(request,projectslug):
     print "project slug is " + projectslug
