@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.utils import timezone
 from guardian.shortcuts import assign_perm, remove_perm
 from django.db.models.signals import m2m_changed
@@ -101,6 +101,32 @@ class Project(models.Model):
     projectHead = models.ForeignKey(ClubMember,related_name="projectHead")
     members = models.ManyToManyField(ClubMember,related_name="members")
     slug = models.SlugField()
+    
+    class Meta:
+        permissions = (
+                ('project_head','Project Head perms'),
+                ('collaborator','Collaborator perms'),
+            )
 
     def __unicode__(self):
         return self.name
+
+    def save(self,*args,**kwargs):
+        super(Project, self).save(*args,**kwargs)
+        assign_perm('project_head',self.projectHead.userid,self)
+        [assign_perm('collaborator',member.userid,self) for member in self.members.all()]
+        findHead = lambda member:member.userid.has_perm('sig_head',self.sig)
+        heads = filter(findHead,ClubMember.objects.filter(sig=self.sig))
+        [assign_perm('project_head',head.userid,self) for head in heads]
+
+
+def project_member_perms(sender, **kwargs):
+    """To automatically add permissions on creation of project"""
+    print kwargs
+    if kwargs['action'] is 'post_add':
+        for member in kwargs['instance'].members.all():
+            assign_perm('collaborator',member.userid,kwargs['instance'])
+            print member, " collaborator permission added "
+    pass
+
+m2m_changed.connect(project_member_perms, sender=Project.members.through)
