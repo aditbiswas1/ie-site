@@ -28,7 +28,7 @@ SIG view
         {% for project in projects %}
             <h3>{{project.name}}</h3>
             <h4>Head : {{project.projectHead}}</h4>
-            <p></br>{{project.description}}</p>
+            <p></br>{{project.description|safe}}</p>
         {%endfor%} 
     </div>
 <div>
@@ -39,6 +39,6 @@ SIG view
     {% for article in articles %}
         <h3>{{article.title}}</h3>
         <h4>Author : {{article.author}}</h4>
-        <p></br>{{article.text}}</p>
+        <p></br>{{article.text|safe}}</p>
     {%endfor%} 
 {% endblock %}
