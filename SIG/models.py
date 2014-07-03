@@ -16,6 +16,7 @@ class SIGroup(models.Model):
         permissions = (
                 ('edit_sig_content','To edit SIG page content'),
                 ('view_sig_content','To view SIG internal content'),
+                ('sig_head','SIG Head perms'),
             )
 
     def __unicode__(self):
@@ -31,6 +32,13 @@ class ClubMember(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def save(self,*args,**kwargs):
+        super(ClubMember, self).save(*args,**kwargs)
+        memberGroup = Group.objects.get(name='member')
+        self.userid.groups.add(memberGroup)
+        self.userid.is_staff = True
+        self.userid.save()
 
 def sig_changed(sender, **kwargs):
     """To automatically add permissions on adding new sig and remove on removing sig"""
@@ -66,6 +74,10 @@ class Article(models.Model):
     published = models.BooleanField(default=False,editable=False)
     dateTimePublished = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField()
+    class Meta:
+        permissions = (
+                ('author','Author perms'),
+                )
 
     def __unicode__(self):
         return self.title
@@ -73,6 +85,13 @@ class Article(models.Model):
     def publish(self):
         self.publish = True
         dateTimePublished = timezone.localtime(timezone.now())
+
+    def save(self,*args,**kwargs):
+        super(Article, self).save(*args,**kwargs)
+        assign_perm('author',self.author.userid,self)
+        findHead = lambda member:member.userid.has_perm('sig_head',self.sig)
+        heads = filter(findHead,ClubMember.objects.filter(sig=self.sig))
+        [assign_perm('author',head.userid,self) for head in heads]
 
 class Project(models.Model):
     """Stores details of projects"""
