@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User,Group
 from django.utils import timezone
 from guardian.shortcuts import assign_perm, remove_perm
-from django.db.models.signals import m2m_changed
+from django.db.models.signals import m2m_changed,pre_save
+from django.dispatch import receiver
 from tinymce import models as tinymce_models
-
 # Create your models here.
 class SIGroup(models.Model):
     """Stores entries for a single SIG."""
@@ -59,7 +59,7 @@ def sig_changed(sender, **kwargs):
         for sig_id in kwargs['pk_set']:
             removedsig = SIGroup.objects.get(pk=sig_id)
             print removedsig
-            if user.has_perm('view_sig_content',newsig):
+            if user.has_perm('view_sig_content',removedsig):
                 remove_perm('view_sig_content',user,removedsig)
     pass
 
@@ -110,23 +110,35 @@ class Project(models.Model):
 
     def __unicode__(self):
         return self.name
-
+    
     def save(self,*args,**kwargs):
         super(Project, self).save(*args,**kwargs)
         assign_perm('project_head',self.projectHead.userid,self)
-        [assign_perm('collaborator',member.userid,self) for member in self.members.all()]
+        print self.projectHead, " assigned project_head perms"
         findHead = lambda member:member.userid.has_perm('sig_head',self.sig)
         heads = filter(findHead,ClubMember.objects.filter(sig=self.sig))
         [assign_perm('project_head',head.userid,self) for head in heads]
 
-
+"""
+@receiver(pre_save, sender=Project)
+def head_check(sender,**kwargs):
+    print kwargs
+    project = kwargs['instance']
+    if project is not None:
+        remove_perm('project_head',project.projectHead.userid,project)
+        print project.projectHead.userid, " project_head perm revoked"
+"""
 def project_member_perms(sender, **kwargs):
     """To automatically add permissions on creation of project"""
     print kwargs
+    if kwargs['action'] is 'pre_clear':
+        for member in kwargs['instance'].members.all():
+            remove_perm('collaborator',member.userid,kwargs['instance'])
+            print member, "collaborator permission revoked"
+
     if kwargs['action'] is 'post_add':
         for member in kwargs['instance'].members.all():
             assign_perm('collaborator',member.userid,kwargs['instance'])
             print member, " collaborator permission added "
-    pass
 
 m2m_changed.connect(project_member_perms, sender=Project.members.through)
