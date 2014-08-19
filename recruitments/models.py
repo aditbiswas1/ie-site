@@ -22,14 +22,7 @@ class Resume(models.Model):
 		('vriddhi','Vriddhi'),
 	)
 	
-	ROUND_CHOICES = (
-		('resume','Resume'),
-		('pi','Preliminary Interview'),
-		('gd','Group Discussion'),
-		('final','Final Interview'),
-		('selected','Selected'),
-		('nq','Not Qualified'),
-	)
+	rounds = ['Resume','Personal Interview','Group Discussion','Final Interview','Selected']
 	
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=30)
@@ -48,7 +41,8 @@ class Resume(models.Model):
 	score = models.IntegerField(null=True)
 	comments = models.TextField(max_length=200)
 	informal_comments = models.TextField(max_length=200)
-	qualified_for_round = models.IntegerField(max_length=20, choices=ROUND_CHOICES, default='nq')
+	qualified_for_round = models.IntegerField(default=0)
+	qualified = models.BooleanField(default=False)
 	evaluated_by = models.CharField(max_length=30)
 	
 	def __str__(self):

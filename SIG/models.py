@@ -7,26 +7,21 @@ from django.dispatch import receiver
 from tinymce import models as tinymce_models
 # Create your models here.
 class SIGroup(models.Model):
-<<<<<<< HEAD
+	"""Stores entries for a single SIG."""
 	name = models.CharField(max_length=100)
 	description = models.TextField()
 	slug = models.SlugField()
 	core = models.BooleanField()
-=======
-    """Stores entries for a single SIG."""
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    slug = models.SlugField()
-
-    class Meta:
-        permissions = (
+	
+	class Meta:
+		permissions = (
                 ('edit_sig_content','To edit SIG page content'),
                 ('view_sig_content','To view SIG internal content'),
                 ('sig_head','SIG Head perms'),
             )
-
-    def __unicode__(self):
-	return self.name
+	
+	def __unicode__(self):
+		return self.name
 
 class ClubMember(models.Model):
     """Stores details of each club member"""
@@ -146,6 +141,5 @@ def project_member_perms(sender, **kwargs):
         for member in kwargs['instance'].members.all():
             assign_perm('collaborator',member.userid,kwargs['instance'])
             print member, " collaborator permission added "
->>>>>>> e0637d5902a303ab53b1d95817d4a7a112a0ee81
-
+			
 m2m_changed.connect(project_member_perms, sender=Project.members.through)
