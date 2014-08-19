@@ -22,5 +22,23 @@ SIG view
   </div>
 </div>
 
+<div id="sec2" class-"blurb">
+    <div class = "container">
+        <h2> Projects </h2> 
+        {% for project in projects %}
+            <h3>{{project.name}}</h3>
+            <h4>Head : {{project.projectHead}}</h4>
+            <p></br>{{project.description|safe}}</p>
+        {%endfor%} 
+    </div>
+<div>
 
+<div id="sec3" class-"blurb">
+    <div class = "container">
+    <h2> Articles </h2> 
+    {% for article in articles %}
+        <h3>{{article.title}}</h3>
+        <h4>Author : {{article.author}}</h4>
+        <p></br>{{article.text|safe}}</p>
+    {%endfor%} 
 {% endblock %}

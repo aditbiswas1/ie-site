@@ -1,0 +1,29 @@
+{% extends 'ieSite/base.html' %}
+
+{% block title %}
+    {{project.name}} - {{project.sig.name}}
+{% endblock %}
+
+{% block content %}
+
+<div class="vert">
+  <div class="container">
+    <h1>{{ project.name }}</h1>
+    <br>
+    <br>
+    <h3> Head : {{project.projectHead.name}} <br> <br> SIG : {{project.sig.name}} </h3>
+  </div>
+</div>
+
+<div id="sec1" class="blurb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <p>{{ project.description|safe }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

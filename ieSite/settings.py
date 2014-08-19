@@ -51,6 +51,8 @@ INSTALLED_APPS = (
     'bootcamp.questions',
     'bootcamp.search',
     'django.contrib.flatpages' ,
+    'guardian',
+    'tinymce',
     'SIG',
 	'recruitments',
 )
@@ -123,4 +125,25 @@ LOGIN_REDIRECT_URL = '/bootcamp/feeds/'
 FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0644
 
+#Settings for guardian.
 SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'guardian.backends.ObjectPermissionBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+#To prevent python manage.py test from failing due to faked migrations.
+SOUTH_TESTS_MIGRATE = False
+
+#TinyMCE configuration.
+
+TINYMCE_DEFAULT_CONFIG = {
+            'plugins': "table,spellchecker,paste,searchreplace",
+            'theme': "advanced",
+            'cleanup_on_startup': True,
+            'custom_undo_redo_levels': 10,
+        }
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True

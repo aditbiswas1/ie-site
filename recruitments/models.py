@@ -48,7 +48,7 @@ class Resume(models.Model):
 	score = models.IntegerField(null=True)
 	comments = models.TextField(max_length=200)
 	informal_comments = models.TextField(max_length=200)
-	qualified_for_round = models.CharField(max_length=20, choices=ROUND_CHOICES, default='nq')
+	qualified_for_round = models.IntegerField(max_length=20, choices=ROUND_CHOICES, default='nq')
 	evaluated_by = models.CharField(max_length=30)
 	
 	def __str__(self):
