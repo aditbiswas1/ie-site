@@ -120,7 +120,7 @@ TEMPLATE_DIRS = (
 )
 
 LOGIN_URL = '/bootcamp/'
-LOGIN_REDIRECT_URL = '/bootcamp/feeds/'
+LOGIN_REDIRECT_URL = '/recruitment/evaluate'
 
 FILE_UPLOAD_TEMP_DIR = '/tmp/'
 FILE_UPLOAD_PERMISSIONS = 0644

@@ -58,8 +58,8 @@ class EvaluateResumeForm(forms.ModelForm):
 		self.fields['informal_comments'].required = False
 		self.fields['score'].label = "Score*"
 		self.fields['comments'].label = "Comments*"
-		self.fields['evaluated_by'].label = "Evaluated By*"
-		self.fields['qualified_for_round'].label = "Qualified for Round*"
+		self.fields['qualified'].label = "Qualified*"
+		self.fields['qualified'].required = False
 	
 	def clean(self):
 		return self.cleaned_data
@@ -70,6 +70,5 @@ class EvaluateResumeForm(forms.ModelForm):
 			'score',
 			'informal_comments',
 			'comments',
-			'qualified_for_round',
-			'evaluated_by'
+			'qualified'
 		]

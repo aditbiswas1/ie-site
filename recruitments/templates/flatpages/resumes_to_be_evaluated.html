@@ -9,7 +9,7 @@
 {% if resumes %}
 <ul>
 	{% for resume in resumes %}
-			<li><a href="/recruitment/evaluate/?resume_id={{resume.id}}">{{resume.name}}</a></li>
+			<li><a href="/recruitment/evaluate/?resume_id={{resume.id}}">{{resume.name}} -> {{resume.current_round}}</a></li>
 	{% endfor %}
 </ul>
 
