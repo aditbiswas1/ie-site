@@ -5,7 +5,7 @@ class SIGroup(models.Model):
 	name = models.CharField(max_length=100)
 	description = models.TextField()
 	slug = models.SlugField()
-
+	core = models.BooleanField()
 
 	def __unicode__(self):
 		return self.name

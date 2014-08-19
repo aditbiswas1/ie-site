@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'bootcamp.search',
     'django.contrib.flatpages' ,
     'SIG',
+	'recruitments',
 )
 
 MIDDLEWARE_CLASSES = (

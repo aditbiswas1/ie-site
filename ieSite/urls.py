@@ -9,9 +9,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^bootcamp/', include('bootcamp.urls')),
     url(r'^sig/', include('SIG.urls')),
+	url(r'^recruitment/', include('recruitments.urls')),
 )
 
-# static page placeholders can be created and added uner flatpages
+# static page placeholders can be created and added under flatpages
 urlpatterns += patterns('',
     (r'^pages/', include('django.contrib.flatpages.urls')),
 )
