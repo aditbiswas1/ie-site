@@ -1,0 +1,62 @@
+body {
+	background-color:#333;
+}
+
+#header h1{
+	display:inline;
+}
+
+#header h3{
+	display:inline;
+	float:right;
+}
+
+#header {
+	background-color:#397FAD;
+	color:#FFF;
+	padding: 10px 10px 10px 10px;
+}
+
+#navbar {
+	background-color:#999;
+}
+
+#content{
+	color:#FFF;
+}
+
+#resume li{
+	display:inline;
+}
+
+form {
+	padding:10px 10px 10px 10px;
+}
+
+input,select,textarea{
+	margin-top:5px;
+	margin-bottom:5px;
+	color:#333;
+}
+
+#submit{
+	background-color:#397FAD;
+	color:#FFF;
+	display:block;
+}
+
+th,td{
+	padding:10px 2px 2px 10px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+a{
+	color:#333;
+}
+
+.evaluation{
+	background-color:#397FAD;
+}

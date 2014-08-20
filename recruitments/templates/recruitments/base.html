@@ -7,22 +7,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}IE Recruitment{% endblock %}</title>
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/custom_rules.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{{ STATIC_URL }}js/jquery-2.1.1.min.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/custom_scripts.js"></script>
 
     {% block head %}
     {% endblock head %}
   </head>
   <body>
     {% block body %}
+	<div id="header">
+		<img src="{{ STATIC_URL }}img/IELogo.png" height="75" width="75"/>
+		<h1>The Institution of Engineers, NITK Chapter</h1>
+		<h3>Recruitment Drive 2014</h3>
+	</div>
+	
+	<div id="navbar">
+		<nav class="navbar navbar-default" role="navigation">
+		  <div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="/recruitment/">Recruitment Home</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">About IE<span class="caret"></span></a>
+				  <ul class="dropdown-menu" role="menu">
+					<li><b>Core SIGs</b></li>
+					<li><a href="#">Code</a></li>
+					<li><a href="#">Gadget</a></li>
+					<li><a href="#">Garage</a></li>
+					<li><a href="#">Finance</a></li>
+					<li class="divider"></li>
+					<li><b>Auxiliary SIGs</b></li>
+					<li><a href="#">Vriddhi</a></li>
+					<li><a href="#">Studio</a></li>
+					<li><a href="#">Amateur Writers' Club</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Events & Festivals</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Core Members</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			  
+			  <ul class="nav navbar-nav navbar-right">
+				<li><a href="/recruitment/submit">Submit Resume</a></li>
+				<li><a href="/recruitment/results">View Results</a></li>
+				<li><a href="/recruitment/evaluate">Sign In & Evaluate</a></li>
+				</li>
+			  </ul>
+			</div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	
+	<div id="content">
 	
 	{%block content %}
 	{%endblock %}
 	
      {% endblock body %}
+	 
+	 </div>
   </body>
 </html>

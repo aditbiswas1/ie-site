@@ -30,11 +30,14 @@ class Resume(models.Model):
 	email_id = models.EmailField(max_length=254)
 	about_me = models.TextField(max_length=200)
 	why_ie = models.TextField(max_length=200)
+	why_not_you = models.TextField(max_length=200)
 	core_sig_choice = models.ManyToManyField(SIGroup,related_name='core_sig_choice')
 	core_sig_interests = models.TextField(max_length=200)
 	core_sig_projects = models.TextField(max_length=200)
 	aux_sig_choice = models.ManyToManyField(SIGroup,related_name='aux_sig_choice')
 	aux_sig_interests = models.TextField(max_length=200)
+	picture = models.TextField(max_length=200)
+	witty_question = models.TextField(max_length=200)
 	timestamp = models.DateTimeField(default=datetime.now())
 	score = models.IntegerField(null=True)
 	comments = models.TextField(max_length=200)
@@ -46,3 +49,7 @@ class Resume(models.Model):
 	
 	def __str__(self):
 		return self.name
+		
+	def attributes(self):
+		for attr, value in self.__dict__.iteritems():
+			yield attr, value

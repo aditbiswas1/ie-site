@@ -15,6 +15,7 @@ class FillResumeForm(forms.ModelForm):
 		self.fields['email_id'].label = "Email ID*"
 		self.fields['about_me'].label = "Tell us about yourself.*"
 		self.fields['why_ie'].label = "Tell us why you'd like to be a part of IE.*"
+		self.fields['why_not_you'].label = "Why should we NOT take you?*"
 		self.fields['core_sig_choice'].label = "What Core SIG(s) would you like to be a part of?*"
 		self.fields['core_sig_choice'].widget = CheckboxSelectMultiple()
 		self.fields['core_sig_choice'].queryset = SIGroup.objects.exclude(core=False)
@@ -27,6 +28,8 @@ class FillResumeForm(forms.ModelForm):
 		self.fields['aux_sig_choice'].required = False
 		self.fields['aux_sig_interests'].label = "Briefly explain why you'd like to be a part of the auxiliary SIG(s) you chose."
 		self.fields['aux_sig_interests'].required = False
+		self.fields['witty_question'].label = "If you're awarded a death penalty for being late for an IE meeting, what would your last words be?*"
+		self.fields['picture'].label = "Tell us what thoughts come to mind when you see the picture below.*"
 	
 	def clean(self):
 		return self.cleaned_data
@@ -41,11 +44,14 @@ class FillResumeForm(forms.ModelForm):
 			'email_id',
 			'about_me',
 			'why_ie',
+			'why_not_you',
 			'core_sig_choice',
 			'core_sig_interests',
 			'core_sig_projects',
 			'aux_sig_choice',
-			'aux_sig_interests'
+			'aux_sig_interests',
+			'witty_question',
+			'picture'
 		]
 	
 
@@ -54,10 +60,9 @@ class EvaluateResumeForm(forms.ModelForm):
 	
 	def __init__(self, *args, **kwargs): 
 		super(forms.ModelForm, self).__init__(*args, **kwargs)
-		self.fields['informal_comments'].label = "Informal Comments/P.M.S."
-		self.fields['informal_comments'].required = False
+		self.fields['informal_comments'].label = "Impression of the Candidate(compulsory)/Informal Comments/P.M.S.*"
 		self.fields['score'].label = "Score*"
-		self.fields['comments'].label = "Comments*"
+		self.fields['comments'].label = "Break-up of Score*"
 		self.fields['qualified'].label = "Qualified*"
 		self.fields['qualified'].required = False
 	

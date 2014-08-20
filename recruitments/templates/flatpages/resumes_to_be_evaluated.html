@@ -7,11 +7,19 @@
 <h1>Resumes to be evaluated</h1>
 
 {% if resumes %}
-<ul>
+<table>
+	<tr>
+		<th>Candidate Name</th>
+		<th>Qualified for Round</th>
+	</tr>
 	{% for resume in resumes %}
-			<li><a href="/recruitment/evaluate/?resume_id={{resume.id}}">{{resume.name}} -> {{resume.current_round}}</a></li>
+		<tr>
+			<td>{{resume.name}}</td>
+			<td>{{resume.current_round}}</td>
+			<td><button class="btn btn-small evaluation" href="/recruitment/evaluate/?resume_id={{resume.id}}">Evaluate</button></td>
+		</tr>
 	{% endfor %}
-</ul>
+</table>
 
 {% else %}
 	<h2>All submitted resumes have been evaluated.</h2>
