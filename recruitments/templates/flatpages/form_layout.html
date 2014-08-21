@@ -7,14 +7,40 @@
 	<tr>
 		<th> Name </th>
 		<th> Qualified For Round </th>
-		<th> Score </th>
-		<th> Comments </th>
+		<th> About Me </th>
+		<th> Why IE? </th>
+		<th> Why reject me? </th>
+		<th> Core SIG Choices </th>
+		<th> Core SIG Interests </th>
+		<th> Core SIG Experience </th>
+		<th> Auxiliary SIG Choices </th>
+		<th> Ideas for SIGs/projects </th>
+		<th> Ideas for SIGs/projects </th>
+		<th> My Last Words </th>
+		<th> My Interpretation of the Image </th>
 	</tr>
 		<tr>
 			<td>{{resume.name}}</td>
 			<td>{{resume.current_round}}</td>
-			<td>{{resume.score}}</td>
-			<td>{{resume.comments}}</td>
+			<td>{{resume.about_me}}</td>
+			<td>{{resume.why_ie}}</td>
+			<td>{{resume.why_not_you}}</td>
+			<td>
+			{% for choice in resume.core_sig_choice.all %}
+				|{{choice}}|
+			{% endfor %}
+			</td>
+			<td>{{resume.core_sig_interests}}</td>
+			<td>{{resume.core_sig_projects}}</td>
+			<td>
+			{% for choice in resume.aux_sig_choice.all %}
+				|{{choice}}|
+			{% endfor %}
+			</td>
+			<td>{{resume.aux_sig_interests}}</td>
+			<td>{{resume.aux_sig_interests}}</td>
+			<td>{{resume.witty_question}}</td>
+			<td>{{resume.picture}}</td>
 		</tr>
 </table>
 

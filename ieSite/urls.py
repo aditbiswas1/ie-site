@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    url(r'^$', 'ieSite.views.home', name='home'),
+    url(r'^$', 'recruitments.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^bootcamp/', include('bootcamp.urls')),
     url(r'^sig/', include('SIG.urls')),

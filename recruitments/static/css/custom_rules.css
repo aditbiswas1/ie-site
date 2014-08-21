@@ -23,6 +23,7 @@ body {
 
 #content{
 	color:#FFF;
+	padding:0px 5px 5px 15px;
 }
 
 #resume li{
@@ -59,4 +60,20 @@ a{
 
 .evaluation{
 	background-color:#397FAD;
+}
+
+.inlineimg{
+	display:inline;
+	margin-left:25%;
+	margin-right:5px;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.popover-content{
+	color:#333;
+}
+
+.popover-title{
+	color:#333;
 }

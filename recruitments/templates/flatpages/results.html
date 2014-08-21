@@ -13,8 +13,9 @@
 	<tr>
 		<th> Name </th>
 		<th> Qualified For Round </th>
-		<th> Score </th>
+		<th> Score (in previous round) </th>
 		<th> Comments </th>
+		<th> Evaluated By </th>
 	</tr>
 	{% for resume in resumes %}
 		<tr>
@@ -22,6 +23,7 @@
 			<td>{{resume.current_round}}</td>
 			<td>{{resume.score}}</td>
 			<td>{{resume.comments}}</td>
+			<td>{{resume.sig_evaluators}}</td>
 		</tr>
 	{% endfor %}
 </table>

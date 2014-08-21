@@ -1,6 +1,7 @@
 from django.db import models
 from SIG.models import SIGroup
 from datetime import datetime
+from django.contrib.auth.models import User
 
 #model to contain the answers to the questions in the form to be filled in by candidates
 class Resume(models.Model):
@@ -22,6 +23,8 @@ class Resume(models.Model):
 		('vriddhi','Vriddhi'),
 	)
 	
+	#TODO: Separate scoring and submitted attributes to avoid concurrency issues
+	
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=30)
 	roll_number = models.CharField(max_length=15)
@@ -39,13 +42,8 @@ class Resume(models.Model):
 	picture = models.TextField(max_length=200)
 	witty_question = models.TextField(max_length=200)
 	timestamp = models.DateTimeField(default=datetime.now())
-	score = models.IntegerField(null=True)
-	comments = models.TextField(max_length=200)
-	informal_comments = models.TextField(max_length=200)
 	qualified_for_round = models.IntegerField(default=1)
-	qualified = models.BooleanField(default=False)
-	evaluated_by = models.CharField(max_length=30)
-	current_round = models.CharField(max_length=30)
+	current_round = models.CharField(max_length=30,default='Resume Evaluation Started')
 	
 	def __str__(self):
 		return self.name
@@ -53,3 +51,18 @@ class Resume(models.Model):
 	def attributes(self):
 		for attr, value in self.__dict__.iteritems():
 			yield attr, value
+
+class ResumeEvaluation(models.Model):
+	
+	resume = models.ForeignKey('Resume',related_name='resume')
+	name = models.CharField(max_length=30)
+	score = models.IntegerField(null=True)
+	comments = models.TextField(max_length=200)
+	qualified = models.BooleanField(default=False)
+	informal_comments = models.TextField(max_length=200)
+	evaluated_by = models.ForeignKey(User,related_name='evaluated_by')
+	sig_evaluators = models.CharField(max_length=50)
+	current_round = models.CharField(max_length=30,default='Pending Resume Evaluation')
+	
+	def __str__(self):
+		return self.name
