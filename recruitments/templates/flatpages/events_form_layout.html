@@ -1,15 +1,12 @@
-{% extends "recruitments/base.html" %}
-
-
-
+{% extends "events/base.html" %}
+{% load bootstrap %}
 {% block content %}
+<h1>{{event.name}}</h1>
+
 <form method="post" action="">
 {% csrf_token %}
-<table>
-{{ResumeForm}}
-</table>
-
-<input type="submit" value="Submit Form"/>
+{{form|bootstrap}}
+<input type="submit" value="Submit Form" class="btn btn-primary btn-lg"/>
 </form>
 
 {% endblock %}
@@ -18,3 +15,5 @@
 {% block bodyscripts %}
   <script src="{{ STATIC_URL }}js/scripts.js"></script>
 {% endblock %}
+
+

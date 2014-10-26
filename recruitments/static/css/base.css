@@ -1,0 +1,14 @@
+body {
+    padding-right : 50px;
+    padding-left : 50px;
+}
+h1,h2,h3,h4,.lead,.navbar a {
+  text-transform:uppercase;
+  font-family:'Voltaire',Arial,sans-serif;
+  letter-spacing:2px;
+}
+
+h1 {
+  font-size:50px;
+}
+

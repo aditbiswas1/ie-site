@@ -1,0 +1,15 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+
+<h1> IE EVENTS! </h1>
+<h3> October 28th - November 2nd </h3>
+{% for event in events %}
+    <h3> {{event.name}} </h3>
+    <p> 
+        {{event.description}}
+        {{event.contact_name}} - {{event.contact_number}}
+    </p>
+{% endfor %}
+
+{% endblock %}
