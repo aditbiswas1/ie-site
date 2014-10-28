@@ -4,12 +4,23 @@
 
 <h1> IE EVENTS! </h1>
 <h3> October 28th - November 2nd </h3>
-{% for event in events %}
-    <h3> {{event.name}} </h3>
-    <p> 
-        {{event.description}}
-        {{event.contact_name}} - {{event.contact_number}}
-    </p>
-{% endfor %}
+<div class="row">
+	{% for event in events %}
+	<div class="col-md-4">
+		<div class="panel">
+			<a href="/events/{{ event.slug }}"><h3> {{event.name}} </h3></a>
+		    <p> 
+		        {{event.description}}
+		    </p>
+		    <p> Contact: {{event.contact_name}} - {{event.contact_number}}</p>
+		    <a href="/events/{{ event.slug }}/register">Register for {{ event.name }}</a>
+		</div>
+		
+	</div>
+    
+
+	{% endfor %}
+</div>
+
 
 {% endblock %}
