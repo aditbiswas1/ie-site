@@ -42,5 +42,5 @@ class Registration(models.Model):
     current_round = models.IntegerField(default=1)
 
     def __unicode__(self):
-        string = self.event.name + ' ' + members
+        string = self.event.name + ' ' + self.members
         return string
