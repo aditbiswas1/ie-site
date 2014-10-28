@@ -1,0 +1,14 @@
+body{
+	background-color: #3E606F;
+	color: #D1DBBD;
+}
+
+.panel{
+	background-color: #FCFFF5;
+	padding: 20px;
+	border-radius: 0px;
+	-webkit-box-shadow: 10px 10px 44px -2px rgba(25,52,65,1);
+	-moz-box-shadow: 10px 10px 44px -2px rgba(25,52,65,1);
+	box-shadow: 10px 10px 44px -2px rgba(25,52,65,1);
+	color: #193441;
+}

@@ -54,7 +54,9 @@ INSTALLED_APPS = (
     'guardian',
     'tinymce',
     'SIG',
-	'recruitments',
+    'recruitments',
+    'eventRegistrations',
+    'bootstrapform',
 )
 
 MIDDLEWARE_CLASSES = (

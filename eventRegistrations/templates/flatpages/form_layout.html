@@ -1,0 +1,20 @@
+{% extends "eventsReg/base.html" %}
+
+
+
+{% block content %}
+<form method="post" action="">
+{% csrf_token %}
+<table>
+{{ResumeForm}}
+</table>
+
+<input type="submit" value="Submit Form"/>
+</form>
+
+{% endblock %}
+
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}

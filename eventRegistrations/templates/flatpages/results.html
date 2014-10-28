@@ -1,0 +1,36 @@
+{% extends "recruitments/base.html" %}
+
+
+
+{% block content %}
+
+<h1>Results of Resume Evaluation</h1>
+
+{% if resumes %}
+<table>
+	<tr>
+		<th> Name </th>
+		<th> Qualified For Round </th>
+		<th> Score </th>
+		<th> Comments </th>
+	</tr>
+	{% for resume in resumes %}
+		<tr>
+			<td>{{resume.name}}</td>
+			<td>{{resume.current_round}}</td>
+			<td>{{resume.score}}</td>
+			<td>{{resume.comments}}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% else %}
+	<h1>No resumes have been evaluated yet.</h1>
+{% endif %}
+
+{% endblock %}
+
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}

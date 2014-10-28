@@ -1,0 +1,15 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+
+<<<<<<< HEAD
+<h2>Your resume was successfully submitted, and will be evaluated shortly. Kindly check the results page after a while.</h2>
+=======
+<h1>Your registration was successful! Thank you!</h1>
+>>>>>>> eventsReg
+
+{% endblock %}
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}

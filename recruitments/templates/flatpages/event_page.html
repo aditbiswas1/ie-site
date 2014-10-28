@@ -1,0 +1,26 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+<h1> {{event.name}} </h1>
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel">
+			
+			<h3> {{event.description}} </h3>
+			<p> Contact: {{event.contact_name}} - {{event.contact_number}}</p>
+			<a href="/events/{{ event.slug }}/register">Register for {{ event.name }}</a><br>
+			<a href="/events/">Back to Events</a>
+			{% for round in rounds %}
+			    <p> 
+			        {{round.round_no}}
+			        {{round.description}}
+			        {{round.date}}
+			        {{round.venue}}
+			    </p>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "recruitments/base.html" %}
+
+
+
+{% block content %}
+
+<h1>Resumes to be evaluated</h1>
+
+{% if resumes %}
+<ul>
+	{% for resume in resumes %}
+			<li><a href="/recruitment/evaluate/?resume_id={{resume.id}}">{{resume.name}} -> {{resume.current_round}}</a></li>
+	{% endfor %}
+</ul>
+
+{% else %}
+	<h2>All submitted resumes have been evaluated.</h2>
+{% endif %}
+
+{% endblock %}
+
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}
