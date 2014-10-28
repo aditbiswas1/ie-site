@@ -1,11 +1,12 @@
 from django.db import models
+from tinymce import models as tinymce_models
 
 # Create your models here.
 
 class Event(models.Model):
     """Details of event"""
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = tinymce_models.HTMLField()
     slug = models.SlugField()
     contact_name = models.CharField(max_length=100)
     contact_number = models.DecimalField(max_digits=10,decimal_places=0)
@@ -42,5 +43,5 @@ class Registration(models.Model):
     current_round = models.IntegerField(default=1)
 
     def __unicode__(self):
-        string = self.event.name + ' ' + members
+        string = self.event.name + ' ' + self.members
         return string

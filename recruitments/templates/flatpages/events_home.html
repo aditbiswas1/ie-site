@@ -10,7 +10,7 @@
 		<div class="panel">
 			<a href="/events/{{ event.slug }}"><h3> {{event.name}} </h3></a>
 		    <p> 
-		        {{event.description}}
+		        {{event.description|safe}}
 		    </p>
 		    <p> Contact: {{event.contact_name}} - {{event.contact_number}}</p>
 		    <a href="/events/{{ event.slug }}/register">Register for {{ event.name }}</a>
