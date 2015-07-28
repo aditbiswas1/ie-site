@@ -5,18 +5,26 @@
 
 {% block content %}
 <div class="container">
-	<h1 class="vert">{{ title }}</h1>
+	<header class="vert">
+		<h3>
+			Evaluation of {{resume.name }} for round : {{resume.current_round}} 
+		</h3>
+	</header>
 	<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-6">
 				<form role="form" class="form-vertical" method="post">
+				    <legend>Evaluator's Form</legend>
 				    {% csrf_token %}
-				    {{ ResumeForm|bootstrap }}
+				    {{ evaluationForm|bootstrap }}
 				    <div class="form-group">
 				      <button type="submit" class="btn btn-primary">Submit</button>
 				    </div>
 				</form>	
 			</div>
-			
+			<div class="col-md-6">
+				<legend>Candidate Resume</legend>
+				{{ resume }}
+			</div>
 	</div>
 </div>
 {% endblock %}

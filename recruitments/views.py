@@ -23,7 +23,7 @@ def submit_resume(request):
 			new_resume.current_round = 'Pending Resume Evaluation'
 			new_resume.save()
 			return render_to_response('flatpages/submission_success.html')
-	return render_to_response('flatpages/form_layout.html',{'ResumeForm':form},context_instance=RequestContext(request))
+	return render_to_response('flatpages/form_layout.html',{'title': "Candidate resume form" ,'ResumeForm':form},context_instance=RequestContext(request))
 
 @login_required
 def evaluate_view(request):
@@ -42,6 +42,8 @@ def evaluate_resume(request,resume_id):
 	
 	if request.method == 'GET':
 		form = forms.EvaluateResumeForm()
+		resume_to_be_evaluated = models.Resume.objects.get(id=resume_id)
+
 	else:
 		form = forms.EvaluateResumeForm(request.POST)
 		
@@ -60,8 +62,9 @@ def evaluate_resume(request,resume_id):
 			current_resume.current_round = rounds[current_resume.qualified_for_round]
 			current_resume.evaluated_by = request.user.username
 			current_resume.save()
+
 			return render_to_response('flatpages/evaluation_success.html')
-	return render_to_response('flatpages/form_layout.html',{'ResumeForm':form,'ResumeId':models.Resume.objects.get(id=resume_id)},context_instance=RequestContext(request))
+	return render_to_response('flatpages/evaluation_form_layout.html',{'evaluationForm':form,'resume':models.Resume.objects.get(id=resume_id)},context_instance=RequestContext(request))
 	
 def results_view(request):
 	return render(request, 'flatpages/results.html', {"resumes":models.Resume.objects.all().order_by('name')})

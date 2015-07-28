@@ -23,7 +23,10 @@ Installation
 5. install the dependencies in the project directory
         
     ```sh
+    sudo apt-get install python-dev libjpeg-dev libfreetype6-dev zlib1g-dev
+    pip install PIL --allow-external PIL --allow-unverified PIL   
     pip install -r requirements.txt
+    
     ```
 
 6. run database sync and migrations
