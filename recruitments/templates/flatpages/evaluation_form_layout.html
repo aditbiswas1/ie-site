@@ -23,7 +23,23 @@
 			</div>
 			<div class="col-md-6">
 				<legend>Candidate Resume</legend>
-				{{ resume }}
+                    <strong>Name</strong>: {{ resume.name }}<br>
+                    <br><strong>Roll Number</strong>: {{ resume.roll_number }}<br>
+                    <br><strong>Gender</strong>: {{ resume.gender }}<br>
+                    <br><strong>About Me</strong>: {{ resume.about_me }}<br>
+                    <br><strong>Why IE?</strong>: {{ resume.why_ie }}<br>
+                    <br><strong>Core SIG Choice</strong>: 
+                            {% for sig in resume.core_sig_choice.all  %}
+                                <li>{{ sig }}</li>
+                            {% endfor %}
+                    <br><strong>Why these SIG(s)?</strong>: {{ resume.core_sig_interests }}<br>
+                    <br><strong>Work Relevant to SIG(s)</strong>: {{ resume.core_sig_projects }}<br>
+                    <br><strong>Aux SIG Choice</strong>:
+                            {% for sig in resume.aux_sig_choice.all %}
+                                <li>{{ sig }}</li>
+                            {% endfor %}
+                    <br><strong>Why these Aux SIG(s)?</strong>: {{ resume.aux_sig_interests }}<br>
+                    
 			</div>
 	</div>
 </div>
