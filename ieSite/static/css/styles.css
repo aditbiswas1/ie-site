@@ -113,7 +113,7 @@ img.grayscale {
 /* use alt in navbar and header for different color */
 
 .alt {
-  background-color: #6E28C9;
+  background-color: #0B0117;
 }
 
 .alt .lead {
@@ -121,7 +121,7 @@ img.grayscale {
 }
 
 .alt.affix {
-  background-color:#4C06AB;
+  background-color:#0B0117;
 }
 
 .alt li a:hover, .alt li.active {
