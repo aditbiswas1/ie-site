@@ -3,3 +3,4 @@ from recruitments import models
 
 # Register your models here.
 admin.site.register(models.Resume)
+admin.site.register(models.ResumeEvaluation)
