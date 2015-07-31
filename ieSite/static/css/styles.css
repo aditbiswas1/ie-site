@@ -89,9 +89,12 @@ img.grayscale {
   background-color:#d46054;
 }
 
-
+@media (min-width:400px){
+    .header h1 {
+        font-size:80px;
+    }
+}
 .header h1 {
-  font-size:80px;
   -webkit-text-stroke: 1px rgba(f,f,f,0.1);
   color:#431a6d;
   color:#fff;
