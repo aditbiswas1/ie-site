@@ -17,7 +17,11 @@
 				    {% csrf_token %}
 				    {{ evaluationForm|bootstrap }}
 				    <div class="form-group">
+					{% if pigd %}
+						<button type="submit" class="btn btn-primary" formaction="/recruitment/evaluate_pigd/?resume_id={{resume.id}}">Submit</button>
+					{% else %}
 				      <button type="submit" class="btn btn-primary">Submit</button>
+					{% endif %}
 				    </div>
 				</form>	
 			</div>

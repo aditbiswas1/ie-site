@@ -28,9 +28,21 @@
       </a>
     </div>
     <div class="navbar-collapse collapse" id="navbar">
+	{% if user.is_authenticated %}
+	<ul class="nav navbar-nav">
+	<li><a href="/recruitment/evaluate">Resume</a></li>
+        <li><a href="/recruitment/pi">Personal Interview</a></li>
+        <li><a href="/recruitment/gd">Group Discussion</a></li>
+	</ul>
+	{% endif %}
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="/flappy">Bored?</a></li>
+		{% if user.is_authenticated %}
+		<li><a href="/bootcamp/settings/password">Change Password?</a></li>
+		<li><a href="/bootcamp/logout">Log Out</a></li>
+		{% else %}
 		<li><a href="/recruitment/submit">Apply!</a></li>
+		{% endif %}
       </ul>
     </div>
    </div>
