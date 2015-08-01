@@ -1,0 +1,37 @@
+{% extends "recruitments/base.html" %}
+
+
+
+{% block content %}
+
+<header class="vert">
+	<h1>Group Discussions to be evaluated</h1>
+</header>
+
+
+{% if resumes %}
+<table class="table table-hover">
+	<tr>
+		<th> Name </th>
+		<th> Current Round </th>
+		<th> Action </th>
+	</tr>
+	{% for resume in resumes %}
+	<tr>
+			<td>{{resume.name}}</td>
+			<td>{{resume.current_round}}</td>
+			<td><a href="/recruitment/evaluate_pigd/?resume_id={{resume.id}}"><button class="btn btn-primary">Evaluate</button></a></td>
+	</tr>	
+	{% endfor %}
+</table>
+
+{% else %}
+	<h2>All Group Discussions have been evaluated.</h2>
+{% endif %}
+
+{% endblock %}
+
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}
