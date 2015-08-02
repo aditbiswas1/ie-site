@@ -1,3 +1,4 @@
+
 {% extends "recruitments/base.html" %}
 {% load bootstrap %}
 
@@ -11,12 +12,17 @@
 				<form role="form" class="form-vertical" method="post">
 				    {% csrf_token %}
 				    {{ ResumeForm|bootstrap }}
-				    <div class="form-group">
-				      <button type="submit" class="btn btn-primary">Submit</button>
+					{% if image %}
+					<img src="{{ STATIC_URL }}img/picture_question.jpg" class="img-responsive col-lg-12"/>
+{% endif %}
+			<br>
+			<br>
+            <div class="form-group">
+				      <button type="submit" class="btn btn-lg btn-primary center-block">Submit</button>
 				    </div>
-				</form>	
+				</form>
 			</div>
-			
+
 	</div>
 </div>
 {% endblock %}

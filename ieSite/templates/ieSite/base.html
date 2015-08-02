@@ -29,10 +29,14 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href="#sec1">Section 1</a></li>
-        <li><a href="#sec2">Section 2</a></li>
-        <li><a href="#sec3">Section 3</a></li>
-        <li><a href="#sec4">Section 4</a></li>
+        <li><a href="#about">About IE</a></li>
+        <li><a href="#sigs">SIGs</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#team">IE NITK 14-15</a></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="flappy">Bored?</a></li>
+		<li><a href="recruitment">Apply!</a></li>
       </ul>
     </div>
    </div>
@@ -41,37 +45,24 @@
 {% block content %}
 {% endblock %}
 
-
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 text-center">
-        <ul class="list-inline">
-          <li><i class="icon-facebook icon-2x"></i></li>
-          <li><i class="icon-twitter icon-2x"></i></li>
-          <li><i class="icon-google-plus icon-2x"></i></li>
-          <li><i class="icon-pinterest icon-2x"></i></li>
-        </ul>
         <hr>
-        <p>Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a>.<br>Company ©2013</p>
+        <p>Built with <i class="icon-heart-empty"></i> at IE NITK</p>
       </div>
     </div>
   </div>
 </footer>
 
-<ul class="nav pull-right scroll-down">
-  <li><a href="#" title="Scroll down"><i class="icon-chevron-down icon-3x"></i></a></li>
-</ul>
-<ul class="nav pull-right scroll-top">
-  <li><a href="#" title="Scroll to top"><i class="icon-chevron-up icon-3x"></i></a></li>
-</ul>
 
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>
   {% block bodyscripts %}
-  
+
   {% endblock %}
-		
+
 	</body>
 </html>
