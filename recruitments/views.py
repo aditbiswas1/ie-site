@@ -38,6 +38,10 @@ def get_gd(request):
 	return render(request, 'flatpages/gds_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=3).order_by('name','current_round')})
 
 @login_required
+def get_eval(request):
+	return render(request, 'flatpages/evaluations.html', {"resumes":models.ResumeEvaluation.objects.all().order_by('name','current_round')})
+
+@login_required
 def evaluate_resume(request,resume_id):
 	rounds = ['Not Qualified','Resume Evaluation Started','Personal Interview','Group Discussion','Final Interview','Selected']
 	

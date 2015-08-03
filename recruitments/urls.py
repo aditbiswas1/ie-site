@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^pi$', 'recruitments.views.get_pi', name='pi_list'),
     url(r'^gd$', 'recruitments.views.get_gd', name='gd_list'),
     url(r'^evaluate_pigd/(?P<resume_id>\w{0,50})$', 'recruitments.views.evaluate_pigd', name='evaluate_pigd'),
+    url(r'^evaluations', 'recruitments.views.get_eval', name='get_eval'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
