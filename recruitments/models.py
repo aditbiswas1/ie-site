@@ -56,7 +56,7 @@ class Resume(models.Model):
 class ResumeEvaluation(models.Model):
 
 	resume = models.ForeignKey('Resume',related_name='resume')
-	name = models.CharField(max_length=30)
+	name = models.CharField(max_length=50)
 	score = models.IntegerField(null=True)
 	comments = models.TextField(max_length=200)
 	qualified = models.BooleanField(default=False)
