@@ -42,7 +42,7 @@ def get_gd(request):
 
 @login_required
 def get_eval(request):
-	return render(request, 'flatpages/evaluations.html', {"resumes":models.ResumeEvaluation.objects.all().order_by('name','current_round')})
+	return render(request, 'flatpages/evaluations.html', {"resumes":models.ResumeEvaluation.objects.filter(current_round='Group Discussion').order_by('-score')})
 
 @login_required
 def evaluate_resume(request,resume_id):
