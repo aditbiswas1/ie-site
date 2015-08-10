@@ -25,6 +25,9 @@ def submit_resume(request):
 			return render_to_response('flatpages/submission_success.html')
 	return render_to_response('flatpages/form_layout.html',{'title': 'Candidate Resume Form', 'ResumeForm':form,'image':'{{ STATIC_URL }}img/picture_question.jpg'},context_instance=RequestContext(request))
 
+def resume_done(request):
+	return render_to_response('flatpages/resume_done.html',{'title': 'Resume Submission Closed'},context_instance=RequestContext(request))
+
 @login_required
 def evaluate_view(request):
 	return render(request, 'flatpages/resumes_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=1).order_by('name','current_round')})
