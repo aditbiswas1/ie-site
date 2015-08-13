@@ -135,11 +135,6 @@ def evaluate_pigd(request,resume_id):
 	return render_to_response('flatpages/evaluation_form_layout.html',{'evaluationForm':form,'resume':current_resume,'pigd':True},context_instance=RequestContext(request))
 	
 def results_view(request):
-	result_list = sets.Set()
-	for eval in models.ResumeEvaluation.objects.all().order_by('name'):
-		if eval.current_round == eval.resume.current_round:
-			result_list.add(eval.resume)
-	for resume in models.Resume.objects.filter(current_round = 'Pending Resume Evaluation'):
-		result_list.add(resume)
-	return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
+    result_list = models.Resume.objects.filter(qualified_for_round = 5)
+    return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
 	
