@@ -12,14 +12,14 @@
 <table class="table table-hover">
 	<tr>
 		<th> Name </th>
-		<th> Qualified? </th>
+		<th> Score </th>
 		<th> Comments </th>
 		<th> Evaluator </th>
 	</tr>
 	{% for resume in resumes %}
 		<tr>
 			<td>{{resume.name}}</td>
-			<td>{{resume.qualified}}</td>
+			<td>{{resume.score}}</td>
 			<td>{{resume.informal_comments}}</td>
 			<td>{{resume.sig_evaluators}}</td>
 		</tr>
