@@ -135,6 +135,6 @@ def evaluate_pigd(request,resume_id):
 	return render_to_response('flatpages/evaluation_form_layout.html',{'evaluationForm':form,'resume':current_resume,'pigd':True},context_instance=RequestContext(request))
 	
 def results_view(request):
-    result_list = models.Resume.objects.filter(qualified_for_round = 5)
+    result_list = models.Resume.objects.filter(qualified_for_round = 5).order_by('name')
     return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
 	
