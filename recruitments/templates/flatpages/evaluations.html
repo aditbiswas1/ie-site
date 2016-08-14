@@ -1,0 +1,43 @@
+{% extends "recruitments/base.html" %}
+
+
+
+{% block content %}
+
+<header class="vert">
+	<h2>Results for 2015 </h2>
+</header>
+
+{% if resumes %}
+<table class="table table-hover">
+	<tr>
+		<th> Name </th>
+		<th> Score </th>
+		<th> Comments </th>
+		<th> Evaluator </th>
+	</tr>
+	{% for resume in resumes %}
+		<tr>
+			<td>{{resume.name}}</td>
+			<td>{{resume.score}}</td>
+			<td>{{resume.informal_comments}}</td>
+			<td>{{resume.sig_evaluators}}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+{% else %}
+
+<header class="vert">
+	<h1>No resumes have been evaluated yet.</h1>
+</header>
+
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block bodyscripts %}
+  <script src="{{ STATIC_URL }}js/scripts.js"></script>
+{% endblock %}
