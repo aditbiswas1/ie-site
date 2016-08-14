@@ -25,6 +25,9 @@ def submit_resume(request):
 			return render_to_response('flatpages/submission_success.html')
 	return render_to_response('flatpages/form_layout.html',{'title': 'Candidate Resume Form', 'ResumeForm':form,'image':'{{ STATIC_URL }}img/picture_question.jpg'},context_instance=RequestContext(request))
 
+def resume_done(request):
+	return render_to_response('flatpages/resume_done.html',{'title': 'Resume Submission Closed'},context_instance=RequestContext(request))
+
 @login_required
 def evaluate_view(request):
 	return render(request, 'flatpages/resumes_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=1).order_by('name','current_round')})
@@ -36,6 +39,10 @@ def get_pi(request):
 @login_required
 def get_gd(request):
 	return render(request, 'flatpages/gds_to_be_evaluated.html', {"resumes":models.Resume.objects.filter(qualified_for_round=3).order_by('name','current_round')})
+
+@login_required
+def get_eval(request):
+	return render(request, 'flatpages/evaluations.html', {"resumes":models.ResumeEvaluation.objects.filter(current_round='Group Discussion').order_by('-score')})
 
 @login_required
 def evaluate_resume(request,resume_id):
@@ -128,11 +135,6 @@ def evaluate_pigd(request,resume_id):
 	return render_to_response('flatpages/evaluation_form_layout.html',{'evaluationForm':form,'resume':current_resume,'pigd':True},context_instance=RequestContext(request))
 	
 def results_view(request):
-	result_list = sets.Set()
-	for eval in models.ResumeEvaluation.objects.all().order_by('name'):
-		if eval.current_round == eval.resume.current_round:
-			result_list.add(eval.resume)
-	for resume in models.Resume.objects.filter(current_round = 'Pending Resume Evaluation'):
-		result_list.add(resume)
-	return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
+    result_list = models.Resume.objects.filter(qualified_for_round = 5).order_by('name')
+    return render(request, 'flatpages/results.html', {"resumes":list(result_list)})
 	
